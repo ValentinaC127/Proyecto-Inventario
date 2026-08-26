@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Medicamento</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f4f7f6; 
+            color: #333333;
+        }
+        .card {
+            border: none;
+            border-radius: 12px;
+            background-color: #ffffff;
+        }
+        .card-header-pastel {
+            background-color: #b8c0ff; 
+            color: #2b2d42;
+            border-top-left-radius: 12px !important;
+            border-top-right-radius: 12px !important;
+        }
+        .form-control {
+            font-family: 'Times New Roman', Times, serif;
+            border-radius: 8px;
+            border: 1px solid #d8e2dc;
+            background-color: #fafafd;
+        }
+        .form-control:focus {
+            border-color: #b8c0ff;
+            box-shadow: 0 0 0 0.25rem rgba(184, 192, 255, 0.4);
+        }
+        .btn-pastel-cancel {
+            background-color: #f7d6e0; 
+            color: #5c3d46;
+            border: none;
+            border-radius: 8px;
+        }
+        .btn-pastel-cancel:hover {
+            background-color: #f2b5d4;
+            color: #333;
+        }
+        .btn-pastel-save {
+            background-color: #b5ead7;
+            color: #2d5a4c;
+            border: none;
+            border-radius: 8px;
+        }
+        .btn-pastel-save:hover {
+            background-color: #97dece;
+            color: #1b382f;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5" style="max-width: 600px;">
+    <div class="card shadow-sm">
+        <div class="card-header card-header-pastel p-3">
+            <h4 class="card-title mb-0 fw-bold">Registrar Medicamento</h4>
+        </div>
+        <div class="card-body p-4">
+            <form th:action="@{/medicamentos/guardar}" th:object="${medicamento}" method="post">
+                
+                <input type="hidden" th:field="*{id}" />
+
+                <div class="mb-3">
+                    <label for="nombre" class="form-label fw-semibold">Nombre del Medicamento</label>
+                    <input type="text" th:field="*{nombre}" id="nombre" class="form-control" 
+                           th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''" placeholder="Ej. Acetaminofén">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="laboratorio" class="form-label fw-semibold">Laboratorio</label>
+                    <input type="text" th:field="*{laboratorio}" id="laboratorio" class="form-control" 
+                           th:classappend="${#fields.hasErrors('laboratorio')} ? 'is-invalid' : ''" placeholder="Ej. Bayer">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('laboratorio')}" th:errors="*{laboratorio}"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="precio" class="form-label fw-semibold">Precio</label>
+                        <input type="number" step="0.01" th:field="*{precio}" id="precio" class="form-control" 
+                               th:classappend="${#fields.hasErrors('precio')} ? 'is-invalid' : ''" placeholder="0.00">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="stock" class="form-label fw-semibold">Stock</label>
+                        <input type="number" th:field="*{stock}" id="stock" class="form-control" 
+                               th:classappend="${#fields.hasErrors('stock')} ? 'is-invalid' : ''" placeholder="0">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="fechaVencimiento" class="form-label fw-semibold">Fecha de Vencimiento</label>
+                    <input type="date" th:field="*{fechaVencimiento}" id="fechaVencimiento" class="form-control" 
+                           th:classappend="${#fields.hasErrors('fechaVencimiento')} ? 'is-invalid' : ''">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaVencimiento')}" th:errors="*{fechaVencimiento}"></div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a th:href="@{/medicamentos}" class="btn btn-pastel-cancel px-4">Cancelar</a>
+                    <button type="submit" class="btn btn-pastel-save px-4 fw-bold">Guardar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
