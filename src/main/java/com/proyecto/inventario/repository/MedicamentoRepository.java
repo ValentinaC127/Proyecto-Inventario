@@ -9,4 +9,5 @@ import com.proyecto.inventario.model.Medicamento;
 
 public interface MedicamentoRepository extends JpaRepository<Medicamento, Long> {
     List<Medicamento> findByStockLessThan(int limiteMinimo);
+    
 }

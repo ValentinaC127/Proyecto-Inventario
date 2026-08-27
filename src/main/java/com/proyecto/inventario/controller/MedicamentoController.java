@@ -37,5 +37,6 @@ public class MedicamentoController {
         }
         medicamentoService.guardar(medicamento);
         return "redirect:/medicamentos";
+        
     }
 }

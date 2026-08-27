@@ -22,5 +22,6 @@ public class MedicamentoService {
 
     public Medicamento guardar(Medicamento medicamento) {
         return medicamentoRepository.save(medicamento);
+        
     }
 }
