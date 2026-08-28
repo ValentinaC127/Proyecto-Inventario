@@ -1,0 +1,78 @@
+/* estilo formulario.html*/
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f4f7f6; 
+    color: #333333;
+}
+.card {
+    border: none;
+    border-radius: 12px;
+    background-color: #ffffff;
+}
+.card-header-pastel {
+    background-color: #b8c0ff; 
+    color: #2b2d42;
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+.form-control {
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 8px;
+    border: 1px solid #d8e2dc;
+    background-color: #fafafd;
+}
+.form-control:focus {
+    border-color: #b8c0ff;
+    box-shadow: 0 0 0 0.25rem rgba(184, 192, 255, 0.4);
+}
+.btn-pastel-cancel {
+    background-color: #f7d6e0; 
+    color: #5c3d46;
+    border: none;
+    border-radius: 8px;
+}
+.btn-pastel-cancel:hover {
+    background-color: #f2b5d4;
+    color: #333;
+}
+.btn-pastel-save {
+    background-color: #b5ead7;
+    color: #2d5a4c;
+    border: none;
+    border-radius: 8px;
+}
+.btn-pastel-save:hover {
+    background-color: #97dece;
+    color: #1b382f;
+}
+
+/*Estilos de lista.html*/
+h2 {
+    color: #4a4e69;
+}
+.btn-pastel-add {
+    background-color: #c8e6c9; 
+    color: #2e7d32;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+.btn-pastel-add:hover {
+    background-color: #a5d6a7;
+    color: #1b5e20;
+}
+.table-pastel {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.table-pastel thead {
+    background-color: #d8e2dc; 
+    color: #3d5a80;
+}
+.table-pastel tbody tr:nth-child(even) {
+    background-color: #f8edeb; 
+}
+.table-pastel tbody tr:hover {
+    background-color: #e8e8e4;
+}
