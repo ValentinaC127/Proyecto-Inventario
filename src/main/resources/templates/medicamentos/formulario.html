@@ -3,58 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Nuevo Medicamento</title>
-    <style>
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            background-color: #f4f7f6; 
-            color: #333333;
-        }
-        .card {
-            border: none;
-            border-radius: 12px;
-            background-color: #ffffff;
-        }
-        .card-header-pastel {
-            background-color: #b8c0ff; 
-            color: #2b2d42;
-            border-top-left-radius: 12px !important;
-            border-top-right-radius: 12px !important;
-        }
-        .form-control {
-            font-family: 'Times New Roman', Times, serif;
-            border-radius: 8px;
-            border: 1px solid #d8e2dc;
-            background-color: #fafafd;
-        }
-        .form-control:focus {
-            border-color: #b8c0ff;
-            box-shadow: 0 0 0 0.25rem rgba(184, 192, 255, 0.4);
-        }
-        .btn-pastel-cancel {
-            background-color: #f7d6e0; 
-            color: #5c3d46;
-            border: none;
-            border-radius: 8px;
-        }
-        .btn-pastel-cancel:hover {
-            background-color: #f2b5d4;
-            color: #333;
-        }
-        .btn-pastel-save {
-            background-color: #b5ead7;
-            color: #2d5a4c;
-            border: none;
-            border-radius: 8px;
-        }
-        .btn-pastel-save:hover {
-            background-color: #97dece;
-            color: #1b382f;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
 </head>
 <body>
 
-<div class="container mt-5" style="max-width: 600px;">
+<div class="container mt-5 form-container">
     <div class="card shadow-sm">
         <div class="card-header card-header-pastel p-3">
             <h4 class="card-title mb-0 fw-bold">Registrar Medicamento</h4>
@@ -112,5 +68,4 @@
 </div>
 
 </body>
-
 </html>
