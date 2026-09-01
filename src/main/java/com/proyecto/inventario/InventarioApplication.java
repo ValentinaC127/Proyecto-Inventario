@@ -11,4 +11,5 @@ public class InventarioApplication {
 	}
 
 }
+//mvn spring-boot:run
 

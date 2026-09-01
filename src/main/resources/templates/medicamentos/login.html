@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Acceso - Sistema de Inventario Farmacéutico</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f4f7f6;
+            color: #333333;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-card {
+            border: none;
+            border-radius: 16px;
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+        }
+        .card-header-pastel {
+            background-color: #b8c0ff;
+            color: #2b2d42;
+            border-top-left-radius: 16px !important;
+            border-top-right-radius: 16px !important;
+            text-align: center;
+        }
+        .form-control {
+            font-family: 'Times New Roman', Times, serif;
+            border-radius: 8px;
+            border: 1px solid #d8e2dc;
+            background-color: #fafafd;
+        }
+        .form-control:focus {
+            border-color: #b8c0ff;
+            box-shadow: 0 0 0 0.25rem rgba(184, 192, 255, 0.4);
+        }
+        .btn-pastel-login {
+            background-color: #b5ead7;
+            color: #2d5a4c;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            width: 100%;
+        }
+        .btn-pastel-login:hover {
+            background-color: #97dece;
+            color: #1b382f;
+        }
+        .alert-pastel {
+            background-color: #f7d6e0;
+            color: #5c3d46;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card login-card">
+    <div class="card-header-pastel p-4">
+        <h4 class="fw-bold mb-1">Farmacia</h4>
+        <small class="text-muted">Control de Inventario Medicamentos</small>
+    </div>
+    <div class="card-body p-4">
+        
+        <!-- Mensajes de Estado -->
+        <div th:if="${param.error}" class="alert alert-pastel mb-3 text-center">
+            Usuario o contraseña incorrectos.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-info mb-3 text-center style="background-color: #e8e8e4; border:none; color:#3d5a80;"">
+            Sesión cerrada correctamente.
+        </div>
+
+        <form th:action="@{/login}" method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label fw-semibold">Usuario</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Ej. bayer" required autofocus>
+            </div>
+
+            <div class="mb-4">
+                <label for="password" class="form-label fw-semibold">Contraseña</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="btn btn-pastel-login py-2">Iniciar Sesión</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
