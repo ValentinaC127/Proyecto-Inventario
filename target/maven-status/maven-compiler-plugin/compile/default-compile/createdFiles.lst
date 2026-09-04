@@ -1,5 +1,7 @@
 com\proyecto\inventario\repository\MedicamentoRepository.class
 com\proyecto\inventario\controller\MedicamentoController.class
+com\proyecto\inventario\controller\LoginController.class
+com\proyecto\inventario\service\MedicamentoService.class
 com\proyecto\inventario\InventarioApplication.class
 com\proyecto\inventario\model\Medicamento.class
-com\proyecto\inventario\service\MedicamentoService.class
+com\proyecto\inventario\ConfigSeguridad\Seguridad.class

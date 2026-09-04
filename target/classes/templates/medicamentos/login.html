@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Acceso - Sistema de Inventario Farmacéutico</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+    
+</head>
+<body>
+
+
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card login-card">
+        <div class="card-header-pastel p-4">
+            <h4 class="fw-bold mb-1">Farmacia</h4>
+            <small class="text-muted">Control de Inventario Medicamentos</small>
+        </div>
+        <div class="card-body p-4">
+    <div class="card-body p-4">
+        
+        <!-- Mensajes de Estado -->
+        <div th:if="${param.error}" class="alert alert-pastel mb-3 text-center">
+            Usuario o contraseña incorrectos.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-info mb-3 text-center" style="background-color: #e8e8e4; border:none; color:#3d5a80;">
+            Sesión cerrada correctamente.
+        </div>
+
+        <form th:action="@{/login}" method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label fw-semibold">Usuario</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Ej. Junkook" required autofocus>
+            </div>
+
+            <div class="mb-4">
+                <label for="password" class="form-label fw-semibold">Contraseña</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="btn btn-pastel-login py-2">Iniciar Sesión</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

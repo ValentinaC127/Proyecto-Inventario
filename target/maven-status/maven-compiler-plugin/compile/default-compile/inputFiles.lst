@@ -1,5 +1,8 @@
-C:\Users\user\Downloads\Proyecto-Inventario\Proyecto-Inventario-main\inventario\src\main\java\com\proyecto\inventario\controller\MedicamentoController.java
-C:\Users\user\Downloads\Proyecto-Inventario\Proyecto-Inventario-main\inventario\src\main\java\com\proyecto\inventario\InventarioApplication.java
-C:\Users\user\Downloads\Proyecto-Inventario\Proyecto-Inventario-main\inventario\src\main\java\com\proyecto\inventario\model\Medicamento.java
-C:\Users\user\Downloads\Proyecto-Inventario\Proyecto-Inventario-main\inventario\src\main\java\com\proyecto\inventario\repository\MedicamentoRepository.java
-C:\Users\user\Downloads\Proyecto-Inventario\Proyecto-Inventario-main\inventario\src\main\java\com\proyecto\inventario\service\MedicamentoService.java
+C:\Users\user\Downloads\Proyecto-Inventario\src\main\java\com\proyecto\inventario\aspect\LogAspect.java
+C:\Users\user\Downloads\Proyecto-Inventario\src\main\java\com\proyecto\inventario\ConfigSeguridad\Seguridad.java
+C:\Users\user\Downloads\Proyecto-Inventario\src\main\java\com\proyecto\inventario\controller\LoginController.java
+C:\Users\user\Downloads\Proyecto-Inventario\src\main\java\com\proyecto\inventario\controller\MedicamentoController.java
+C:\Users\user\Downloads\Proyecto-Inventario\src\main\java\com\proyecto\inventario\InventarioApplication.java
+C:\Users\user\Downloads\Proyecto-Inventario\src\main\java\com\proyecto\inventario\model\Medicamento.java
+C:\Users\user\Downloads\Proyecto-Inventario\src\main\java\com\proyecto\inventario\repository\MedicamentoRepository.java
+C:\Users\user\Downloads\Proyecto-Inventario\src\main\java\com\proyecto\inventario\service\MedicamentoService.java

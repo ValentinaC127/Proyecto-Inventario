@@ -49,4 +49,5 @@ public class Seguridad {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+    
 }
