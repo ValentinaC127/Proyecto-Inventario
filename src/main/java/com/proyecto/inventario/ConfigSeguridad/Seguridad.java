@@ -18,17 +18,35 @@ public class Seguridad {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
         http
             .csrf(csrf -> csrf.disable())
+
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/login/**", "/css/**", "/js/**", "/images/**").permitAll()
+                .requestMatchers("/login/*", "/css/", "/js/", "/images/*").permitAll()
                 .anyRequest().authenticated()
             )
+
             .formLogin(form -> form
                 .loginPage("/login")
                 .defaultSuccessUrl("/medicamentos", true)
+
+                .failureHandler((request, response, exception) -> {
+
+                    String usuario = request.getParameter("username");
+
+                    if (!"Valentina".equals(usuario)) {
+                        System.out.println("Usuario incorrecto: " + usuario);
+                    } else {
+                        System.out.println("Contraseña incorrecta para el usuario: " + usuario);
+                    }
+
+                    response.sendRedirect("/login?error");
+                })
+
                 .permitAll()
             )
+
             .logout(logout -> logout.permitAll());
 
         return http.build();
@@ -36,6 +54,7 @@ public class Seguridad {
 
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
+
         UserDetails user = User.builder()
             .username("Valentina")
             .password(passwordEncoder.encode("1234"))
@@ -49,5 +68,4 @@ public class Seguridad {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
 }
