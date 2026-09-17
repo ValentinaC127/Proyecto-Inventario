@@ -11,6 +11,11 @@ public class LoginController {
         return "medicamentos/login";
     }
 
+    @GetMapping("/registro")
+    public String mostrarRegistro() {
+        return "medicamentos/registro";
+    }
+
     public void iniciarSesion() {
         System.out.println("Proceso de inicio de sesión");
     }

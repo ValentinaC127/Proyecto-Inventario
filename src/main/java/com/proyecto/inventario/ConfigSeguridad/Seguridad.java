@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+
 @Configuration
 @EnableWebSecurity
 public class Seguridad {
@@ -28,12 +29,15 @@ public class Seguridad {
             .csrf(csrf -> csrf.disable())
 
             .authorizeHttpRequests(auth -> auth
+
                 .requestMatchers(
-                    "/login/**",
-                    "/css/**",
+                    "/login",
+                    "/registro",
+                    "/css**",
                     "/js/**",
                     "/images/**"
                 ).permitAll()
+
                 .anyRequest().authenticated()
             )
 
@@ -53,30 +57,35 @@ public class Seguridad {
         return http.build();
     }
 
+
     @Bean
-    public UserDetailsService userDetailsService(
+    public InMemoryUserDetailsManager userDetailsService(
             PasswordEncoder passwordEncoder) {
 
         UserDetails user = User.builder()
-            .username("Valentina")
-            .password(passwordEncoder.encode("1234"))
-            .roles("USER")
-            .build();
+                .username("Valentina")
+                .password(passwordEncoder.encode("1234"))
+                .roles("USER")
+                .build();
 
         return new InMemoryUserDetailsManager(user);
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+
     @Bean
     public AuthenticationManager authenticationManager(
             UserDetailsService userDetailsService,
             PasswordEncoder passwordEncoder) {
 
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider(userDetailsService);
+        DaoAuthenticationProvider provider =
+                new DaoAuthenticationProvider(userDetailsService);
+
         provider.setPasswordEncoder(passwordEncoder);
 
         return new ProviderManager(provider);
