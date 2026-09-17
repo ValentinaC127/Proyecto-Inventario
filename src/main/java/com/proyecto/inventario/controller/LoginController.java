@@ -8,6 +8,10 @@ public class LoginController {
 
     @GetMapping("/login")
     public String mostrarLogin() {
-        return "medicamentos/login"; 
+        return "medicamentos/login";
+    }
+
+    public void iniciarSesion() {
+        System.out.println("Proceso de inicio de sesión");
     }
 }

@@ -2,6 +2,9 @@ package com.proyecto.inventario.ConfigSeguridad;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -17,43 +20,42 @@ import org.springframework.security.web.SecurityFilterChain;
 public class Seguridad {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(
+            HttpSecurity http,
+            AuthenticationManager authenticationManager) throws Exception {
 
         http
             .csrf(csrf -> csrf.disable())
 
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/login/*", "/css/", "/js/", "/images/*").permitAll()
+                .requestMatchers(
+                    "/login/**",
+                    "/css/**",
+                    "/js/**",
+                    "/images/**"
+                ).permitAll()
                 .anyRequest().authenticated()
             )
+
+            .authenticationManager(authenticationManager)
 
             .formLogin(form -> form
                 .loginPage("/login")
                 .defaultSuccessUrl("/medicamentos", true)
-
-                .failureHandler((request, response, exception) -> {
-
-                    String usuario = request.getParameter("username");
-
-                    if (!"Valentina".equals(usuario)) {
-                        System.out.println("Usuario incorrecto: " + usuario);
-                    } else {
-                        System.out.println("Contraseña incorrecta para el usuario: " + usuario);
-                    }
-
-                    response.sendRedirect("/login?error");
-                })
-
+                .failureUrl("/login?error")
                 .permitAll()
             )
 
-            .logout(logout -> logout.permitAll());
+            .logout(logout -> logout
+                .permitAll()
+            );
 
         return http.build();
     }
 
     @Bean
-    public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
+    public UserDetailsService userDetailsService(
+            PasswordEncoder passwordEncoder) {
 
         UserDetails user = User.builder()
             .username("Valentina")
@@ -67,5 +69,16 @@ public class Seguridad {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(
+            UserDetailsService userDetailsService,
+            PasswordEncoder passwordEncoder) {
+
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider(userDetailsService);
+        provider.setPasswordEncoder(passwordEncoder);
+
+        return new ProviderManager(provider);
     }
 }
