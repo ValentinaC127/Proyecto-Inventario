@@ -33,7 +33,7 @@ public class Seguridad {
                 .requestMatchers(
                     "/login",
                     "/registro",
-                    "/css**",
+                    "/css/**",
                     "/js/**",
                     "/images/**"
                 ).permitAll()

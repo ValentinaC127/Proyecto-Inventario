@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.proyecto.inventario.model.Medicamento;
 import com.proyecto.inventario.repository.MedicamentoRepository;
 
+
 @Service
 public class MedicamentoService {
 
@@ -22,6 +23,5 @@ public class MedicamentoService {
 
     public Medicamento guardar(Medicamento medicamento) {
         return medicamentoRepository.save(medicamento);
-        
     }
 }
