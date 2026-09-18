@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.proyecto.inventario.model.Medicamento;
+import com.proyecto.inventario.Dto.dto;
+import com.proyecto.inventario.model.MForm;
 import com.proyecto.inventario.service.MedicamentoService;
 
 import jakarta.validation.Valid;
-
 
 @Controller
 @RequestMapping("/medicamentos")
@@ -26,25 +26,44 @@ public class MedicamentoController {
 
     @GetMapping
     public String listarMedicamentos(Model model) {
-        model.addAttribute("medicamentos", medicamentoService.obtenerTodos());
+
+        model.addAttribute(
+                "medicamentos",
+                medicamentoService.obtenerTodos()
+        );
+
         return "medicamentos/lista";
     }
 
     @GetMapping("/nuevo")
     public String mostrarFormulario(Model model) {
-        model.addAttribute("medicamento", new Medicamento());
+
+        model.addAttribute("medicamento", new MForm());
+
         return "medicamentos/formulario";
     }
 
     @PostMapping("/guardar")
-    public String guardarMedicamento(@Valid @ModelAttribute("medicamento") Medicamento medicamento, 
-                                     BindingResult result, 
-                                     Model model) {
+    public String guardarMedicamento(
+            @Valid @ModelAttribute("medicamento") MForm formulario,
+            BindingResult result) {
+
         if (result.hasErrors()) {
             return "medicamentos/formulario";
         }
-        
-        medicamentoService.guardar(medicamento);
+
+        dto datos = new dto();
+
+        datos.setNombre(formulario.getNombre());
+        datos.setLaboratorio(formulario.getLaboratorio());
+        datos.setPrecio(formulario.getPrecio());
+        datos.setStock(formulario.getStock());
+        datos.setFechaVencimiento(
+                formulario.getFechaVencimiento().toString()
+        );
+
+        medicamentoService.guardar(datos);
+
         return "redirect:/medicamentos";
     }
 }
