@@ -160,3 +160,58 @@ h2 {
     border: none;
     border-radius: 8px;
 }
+
+.btn-pastel-register { 
+    background-color: #d8c4f1; 
+    color: #4a3f5c; 
+    border: none; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    padding: 0.75rem; 
+    text-decoration: none; 
+    display: inline-block; 
+    width: 100%; 
+    font-size: 1.1rem; 
+    text-align: center;
+} 
+
+.btn-pastel-register:hover { 
+    background-color: #c5a9e6; 
+    color: #332b40; 
+}
+
+.btn-pastel-logout {
+    background-color: #f7d6e0;
+    color: #5c3d46;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    padding: 0.6rem 1.5rem;
+}
+
+.btn-pastel-logout:hover {
+    background-color: #f2b5d4;
+    color: #333333;
+}
+
+
+.btn-pastel-back { 
+    background-color: #d8c4f1; 
+    color: #4a3f5c; 
+    border: none; 
+    border-radius: 8px; 
+    font-family: 'Times New Roman', Times, serif; 
+    font-weight: bold; 
+    padding: 0.75rem; 
+    text-decoration: none; 
+    display: inline-block; 
+    width: 100%; 
+    font-size: 1.1rem; 
+    text-align: center;
+} 
+
+.btn-pastel-back:hover { 
+    background-color: #c5a9e6; 
+    color: #333333; 
+}
