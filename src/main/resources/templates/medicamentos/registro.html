@@ -4,109 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Registro - Sistema de Inventario Medicamentos</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-          rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/estilos.css}">
-
 </head>
 
 <body class="login-page">
 
 <div class="d-flex justify-content-center align-items-center min-vh-100">
 
-    <div class="card login-card shadow-sm"
-         style="max-width: 400px; width: 100%;">
+    <div class="card login-card shadow-sm" style="max-width: 400px; width: 100%;">
 
         <div class="card-header-pastel p-4 text-center">
-
             <h4 class="fw-bold mb-1">Crear cuenta</h4>
-
-            <small class="text-muted">
-                Sistema de Inventario Farmacéutico
-            </small>
-
+            <small class="text-muted">Sistema de Inventario Farmacéutico</small>
         </div>
-
 
         <div class="card-body p-4">
 
             <div th:if="${param.error != null and param.error[0] == 'password'}"
-                 class="alert alert-pastel mb-3 text-center">
-
+                 class="alert alert-danger mb-3 text-center">
                 Las contraseñas no coinciden.
-
             </div>
-
 
             <div th:if="${param.error != null and param.error[0] == 'usuario'}"
-                 class="alert alert-pastel mb-3 text-center">
-
-                El usuario ya existe.
-
+                 class="alert alert-danger mb-3 text-center">
+                El usuario ya existe en la base de datos.
             </div>
-
 
             <form th:action="@{/registro}" method="post">
 
                 <div class="mb-3">
-
-                    <label for="username"
-                           class="form-label fw-semibold">
-
-                        Usuario
-
-                    </label>
-
+                    <label for="nombreU" class="form-label fw-semibold">Usuario</label>
                     <input type="text"
-                           id="username"
-                           name="username"
+                           id="nombreU"
+                           name="nombreU"
                            class="form-control"
                            placeholder="Ej. Jungkook"
                            required
                            autofocus>
-
                 </div>
 
-
                 <div class="mb-3">
-
-                    <label for="password"
-                           class="form-label fw-semibold">
-
-                        Contraseña
-
-                    </label>
-
+                    <label for="contraseña" class="form-label fw-semibold">Contraseña</label>
                     <input type="password"
-                           id="password"
-                           name="password"
+                           id="contraseña"
+                           name="contraseña"
                            class="form-control"
                            placeholder="••••••••"
                            required>
-
                 </div>
 
-
-                <button type="submit"
-                        class="btn btn-pastel-login py-2">
-
+                <button type="submit" class="btn btn-pastel-login py-2 w-100">
                     Crear cuenta
-
                 </button>
 
             </form>
 
-
             <div class="text-center mt-3">
-
                 <a th:href="@{/login}" class="btn btn-pastel-back">
                     Volver al inicio de sesión
                 </a>
-
             </div>
 
         </div>

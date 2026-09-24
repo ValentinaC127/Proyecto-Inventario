@@ -1,9 +1,8 @@
 package com.proyecto.inventario.controller;
 
-import org.springframework.security.core.userdetails.User;
+import com.proyecto.inventario.model.Registro;
+import com.proyecto.inventario.repository.RegistroRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,38 +10,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class RegistroController {
 
-    private final InMemoryUserDetailsManager userDetailsManager;
+    private final RegistroRepository registroRepository;
     private final PasswordEncoder passwordEncoder;
 
     public RegistroController(
-            InMemoryUserDetailsManager userDetailsManager,
+            RegistroRepository registroRepository,
             PasswordEncoder passwordEncoder) {
-
-        this.userDetailsManager = userDetailsManager;
+        this.registroRepository = registroRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
-
     @PostMapping("/registro")
     public String registrarUsuario(
-            @RequestParam String username,
-            @RequestParam String password) {
+            @RequestParam("nombreU") String nombreU,
+            @RequestParam("contraseña") String contraseña) {
 
-        if (!password.equals(password)) {
-            return "redirect:/registro?error=password";
+
+        if (registroRepository.findByNombreU(nombreU).isPresent()) {
+            return "redirect:/registro?error=registro";
         }
 
-        if (userDetailsManager.userExists(username)) {
-            return "redirect:/registro?error=usuario";
-        }
+        Registro nuevoRegistro = new Registro(
+            nombreU, 
+            passwordEncoder.encode(contraseña)
+        );
 
-        var nuevoUsuario = User.builder()
-                .username(username)
-                .password(passwordEncoder.encode(password))
-                .roles("USER")
-                .build();
-
-        userDetailsManager.createUser(nuevoUsuario);
+    
+        registroRepository.save(nuevoRegistro);
 
         return "redirect:/login?registro=exitoso";
     }
