@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.proyecto.inventario.Dto.dto;
 import com.proyecto.inventario.model.MForm;
+import com.proyecto.inventario.model.Medicamento;
 import com.proyecto.inventario.service.MedicamentoService;
+
 
 import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/medicamentos")
+
 public class MedicamentoController {
 
     private final MedicamentoService medicamentoService;
@@ -28,10 +31,7 @@ public class MedicamentoController {
     public String listarMedicamentos(Model model) {
 
         model.addAttribute(
-                "medicamentos",
-                medicamentoService.obtenerTodos()
-        );
-
+                "medicamentos",medicamentoService.obtenerTodos());
         return "medicamentos/lista";
     }
 
@@ -66,4 +66,6 @@ public class MedicamentoController {
 
         return "redirect:/medicamentos";
     }
+
+
 }
