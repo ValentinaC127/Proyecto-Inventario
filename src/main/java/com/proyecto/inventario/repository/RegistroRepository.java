@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface RegistroRepository extends JpaRepository<Registro, Long> {
 
-    Optional<Registro> findBynombreU(String nombreU);
+    Optional<Registro> findByNombreU(String nombreU);
 }
