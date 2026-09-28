@@ -10,6 +10,7 @@ import jakarta.validation.constraints.NotNull;
 
 public class MForm {
 
+    private Long id;
     @NotBlank(message = "El nombre del medicamento no puede estar vacío")
     private String nombre;
 
@@ -27,6 +28,14 @@ public class MForm {
     @NotNull(message = "La fecha de vencimiento es obligatoria")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechaVencimiento;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;

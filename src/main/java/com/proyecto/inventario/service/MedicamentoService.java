@@ -38,5 +38,13 @@ public class MedicamentoService {
         return medicamentoRepository.save(medicamento);
     }
 
+    public Medicamento obtenerPorId(Long id) {
+        return medicamentoRepository.findById(id).orElse(null);
+    }
+
+    public void eliminar(Long id) {
+        medicamentoRepository.deleteById(id);
+    }
+
 
 }

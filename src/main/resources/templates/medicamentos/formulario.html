@@ -13,11 +13,11 @@
 <div class="container mt-5 form-container">
     <div class="card shadow-sm">
         <div class="card-header card-header-pastel p-3">
-            <h4 class="card-title mb-0 fw-bold">Registrar Medicamento</h4>
+            <h4 class="card-title mb-0 fw-bold" th:text="${medicamento.id != null} ? 'Editar Medicamento' : 'Registrar Medicamento'">Registrar Medicamento</h4>
         </div>
         <div class="card-body p-4">
             <form th:action="@{/medicamentos/guardar}" th:object="${medicamento}" method="post">
-
+                <input type="hidden" th:field="*{id}">
                 <div class="mb-3">
                     <label for="nombre" class="form-label fw-semibold">Nombre del Medicamento</label>
                     <input type="text" th:field="*{nombre}" id="nombre" class="form-control" 

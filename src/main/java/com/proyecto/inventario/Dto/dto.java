@@ -2,6 +2,7 @@ package com.proyecto.inventario.Dto;
 
 public class dto {
 
+    private Long id;
     private String nombre;
     private String laboratorio;
     private Double precio;
@@ -9,6 +10,14 @@ public class dto {
     private String fechaVencimiento;
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public String getNombre() {
         return nombre;
     }
