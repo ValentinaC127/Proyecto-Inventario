@@ -44,46 +44,46 @@ public class MedicamentoController {
         return "medicamentos/formulario";
     }
 
-    @PostMapping("/guardar")
-    public String guardarMedicamento(
-            @Valid @ModelAttribute("medicamento") MForm formulario,
-            BindingResult result) {
-
+   @PostMapping("/guardar")
+    public String guardarMedicamento(@Valid @ModelAttribute("medicamento") MForm formulario, BindingResult result) {
         if (result.hasErrors()) {
             return "medicamentos/formulario";
         }
 
-        dto datos = new dto();
-
-        datos.setId(formulario.getId());
-        datos.setNombre(formulario.getNombre());
-        datos.setLaboratorio(formulario.getLaboratorio());
-        datos.setPrecio(formulario.getPrecio());
-        datos.setStock(formulario.getStock());
-        datos.setFechaVencimiento(
-                formulario.getFechaVencimiento().toString()
-        );
-
-        medicamentoService.guardar(datos);
-
-        return "redirect:/medicamentos";
+        Medicamento medicamento = new Medicamento();
+        medicamento.setId(formulario.getId());
+        medicamento.setNombre(formulario.getNombre());
+        medicamento.setLaboratorio(formulario.getLaboratorio());
+        medicamento.setPrecio(formulario.getPrecio());
+        medicamento.setStock(formulario.getStock());
+        medicamento.setFechaVencimiento(formulario.getFechaVencimiento());
+       try {
+        medicamentoService.guardar(medicamento);
+         return "redirect:/medicamentos";
+        }  
+        catch (IllegalArgumentException e) {
+      result.rejectValue("fechaVencimiento", "error.fechaVencimiento", e.getMessage());
+        return "medicamentos/formulario";
     }
-
+}
     @GetMapping("/editar/{id}")
     public String mostrarFormularioEditar(@PathVariable Long id, Model model) {
         Medicamento medicamento = medicamentoService.obtenerPorId(id);
-        
+
         if (medicamento == null) {
             return "redirect:/medicamentos";
         }
 
         MForm formulario = new MForm();
-        formulario.setId(medicamento.getId()); 
+        formulario.setId(medicamento.getId());
         formulario.setNombre(medicamento.getNombre());
         formulario.setLaboratorio(medicamento.getLaboratorio());
         formulario.setPrecio(medicamento.getPrecio());
         formulario.setStock(medicamento.getStock());
-        formulario.setFechaVencimiento(medicamento.getFechaVencimiento());
+        
+        if (medicamento.getFechaVencimiento() != null) {
+    formulario.setFechaVencimiento(medicamento.getFechaVencimiento());
+}
 
         model.addAttribute("medicamento", formulario);
         return "medicamentos/formulario";
@@ -93,7 +93,6 @@ public class MedicamentoController {
     public String eliminarMedicamento(@PathVariable Long id) {
         medicamentoService.eliminar(id);
         return "redirect:/medicamentos";
-    }   
-
-
+    }
+    
 }

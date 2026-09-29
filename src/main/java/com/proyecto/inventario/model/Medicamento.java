@@ -13,15 +13,10 @@ public class Medicamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nombre;
-
     private String laboratorio;
-
     private Double precio;
-
     private Integer stock;
-
     private LocalDate fechaVencimiento;
 
 

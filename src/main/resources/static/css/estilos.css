@@ -215,3 +215,33 @@ h2 {
     background-color: #c5a9e6; 
     color: #333333; 
 }
+
+/* botones eliminar y editar */
+
+.btn-pastel-edit {
+    background-color: #ffedcc;
+    color: #8a5300;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-pastel-edit:hover {
+    background-color: #ffe0b2;
+    color: #5c3700;
+}
+
+.btn-pastel-delete {
+    background-color: #f7d6e0;
+    color: #5c3d46;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-pastel-delete:hover {
+    background-color: #f2b5d4;
+    color: #333333;
+}

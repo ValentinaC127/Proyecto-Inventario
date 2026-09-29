@@ -1,14 +1,13 @@
 package com.proyecto.inventario.service;
 
-import java.time.LocalDate;
 import java.util.List;
-
+import java.time.LocalDate;
 import org.springframework.stereotype.Service;
 
-import com.proyecto.inventario.Dto.dto;
 import com.proyecto.inventario.model.Medicamento;
 import com.proyecto.inventario.repository.MedicamentoRepository;
 
+ 
 @Service
 public class MedicamentoService {
 
@@ -22,29 +21,18 @@ public class MedicamentoService {
         return medicamentoRepository.findAll();
     }
 
-    public Medicamento guardar(dto datos) {
-
-        Medicamento medicamento = new Medicamento();
-
-        medicamento.setNombre(datos.getNombre());
-        medicamento.setLaboratorio(datos.getLaboratorio());
-        medicamento.setPrecio(datos.getPrecio());
-        medicamento.setStock(datos.getStock());
-
-        medicamento.setFechaVencimiento(
-                LocalDate.parse(datos.getFechaVencimiento())
-        );
-
+    public Medicamento guardar(Medicamento medicamento) {
+      if (medicamento.getFechaVencimiento() == null || !medicamento.getFechaVencimiento().isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("La fecha asignada debe ser posterior a la fecha actual.");
+        }
         return medicamentoRepository.save(medicamento);
     }
-
     public Medicamento obtenerPorId(Long id) {
-        return medicamentoRepository.findById(id).orElse(null);
-    }
+    return medicamentoRepository.findById(id).orElseThrow(() 
+    -> new IllegalArgumentException("Medicamento no encontrado con el ID: " + id));
+}
 
     public void eliminar(Long id) {
-        medicamentoRepository.deleteById(id);
-    }
-
-
+    medicamentoRepository.deleteById(id);
+ }
 }

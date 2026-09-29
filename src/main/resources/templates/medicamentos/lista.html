@@ -33,9 +33,10 @@
                     <td th:text="${'$' + med.precio}">$5000</td>
                     <td th:text="${med.stock}">50</td>
                     <td class="text-center">
-                        
-                        <a th:href="@{/medicamentos/editar/{id}(id=${med.id})}" class="btn btn-sm btn-outline-primary me-2">Editar</a>
-                        <a th:href="@{/medicamentos/eliminar/{id}(id=${med.id})}" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Estás seguro de eliminar este medicamento?');">Eliminar</a>
+                      <a th:href="@{/medicamentos/editar/{id}(id=${med.id})}" class="btn btn-sm btn-pastel-edit me-2 px-3"> Editar
+                      </a>
+                      <a th:href="@{/medicamentos/eliminar/{id}(id=${med.id})}" class="btn btn-sm btn-pastel-delete px-3"- onclick="return confirm('¿Estás seguro de eliminar este medicamento?');"> Eliminar
+                      </a>
                     </td>
                 </tr>
 

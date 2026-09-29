@@ -38,6 +38,6 @@ public class RegistroController {
     
         registroRepository.save(nuevoRegistro);
 
-        return "redirect:/login?registro=exitoso";
-    }
+        return "redirect:/login?registro=true";    
+}
 }
