@@ -10,9 +10,4 @@ public class LoginController {
     public String mostrarLogin() {
         return "medicamentos/login";
     }
-
-    @GetMapping("/registro")
-    public String mostrarRegistro() {
-        return "medicamentos/registro";
-    }
 }

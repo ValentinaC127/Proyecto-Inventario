@@ -1,6 +1,5 @@
 package com.proyecto.inventario.ConfigSeguridad;
 
-import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,7 +8,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -36,21 +34,6 @@ public class Seguridad {
             );
 
         return http.build();
-    }
-
-    @Bean
-    public JdbcUserDetailsManager userDetailsManager(DataSource dataSource) {
-        JdbcUserDetailsManager manager = new JdbcUserDetailsManager(dataSource);
-        
-        manager.setUsersByUsernameQuery(
-            "SELECT nombreu, contraseña AS password, 1 as enabled FROM usuarios WHERE nombreu = ?"
-        );
-        
-        manager.setAuthoritiesByUsernameQuery(
-            "SELECT nombreu, 'USER' as authority FROM usuarios WHERE nombreu = ?"
-        );
-        
-        return manager;
     }
 
     @Bean

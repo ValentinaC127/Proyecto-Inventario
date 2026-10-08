@@ -22,37 +22,29 @@
 
         <div class="card-body p-4">
 
-            <div th:if="${param.error != null and param.error[0] == 'password'}"
-                 class="alert alert-danger mb-3 text-center">
-                Las contraseñas no coinciden.
-            </div>
+            <div th:if="${errorUsuario}" class="alert alert-danger mb-3 text-center" th:text="${errorUsuario}"></div>
 
-            <div th:if="${param.error != null and param.error[0] == 'usuario'}"
-                 class="alert alert-danger mb-3 text-center">
-                El usuario ya existe en la base de datos.
-            </div>
-
-            <form th:action="@{/registro}" method="post">
+            <form th:action="@{/registro}" th:object="${registroDto}" method="post">
 
                 <div class="mb-3">
                     <label for="nombreU" class="form-label fw-semibold">Usuario</label>
                     <input type="text"
                            id="nombreU"
-                           name="nombreU"
+                           th:field="*{nombreU}"
                            class="form-control"
                            placeholder="Ej. Jungkook"
-                           required
                            autofocus>
+                    <div class="text-danger small mt-1" th:if="${#fields.hasErrors('nombreU')}" th:errors="*{nombreU}"></div>
                 </div>
 
                 <div class="mb-3">
                     <label for="contraseña" class="form-label fw-semibold">Contraseña</label>
                     <input type="password"
                            id="contraseña"
-                           name="contraseña"
+                           th:field="*{contraseña}"
                            class="form-control"
-                           placeholder="••••••••"
-                           required>
+                           placeholder="••••••••">
+                    <div class="text-danger small mt-1" th:if="${#fields.hasErrors('contraseña')}" th:errors="*{contraseña}"></div>
                 </div>
 
                 <button type="submit" class="btn btn-pastel-login py-2 w-100">
@@ -62,7 +54,7 @@
             </form>
 
             <div class="text-center mt-3">
-                <a th:href="@{/login}" class="btn btn-pastel-back">
+                <a th:href="@{/login}" class="btn btn-pastel-back w-100">
                     Volver al inicio de sesión
                 </a>
             </div>

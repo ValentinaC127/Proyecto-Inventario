@@ -11,6 +11,7 @@ import jakarta.validation.constraints.NotNull;
 public class MForm {
 
     private Long id;
+    
     @NotBlank(message = "El nombre del medicamento no puede estar vacío")
     private String nombre;
 
