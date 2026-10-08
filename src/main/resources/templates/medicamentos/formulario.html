@@ -18,6 +18,7 @@
         <div class="card-body p-4">
             <form th:action="@{/medicamentos/guardar}" th:object="${medicamento}" method="post">
                 <input type="hidden" th:field="*{id}">
+                
                 <div class="mb-3">
                     <label for="nombre" class="form-label fw-semibold">Nombre del Medicamento</label>
                     <input type="text" th:field="*{nombre}" id="nombre" class="form-control" 
@@ -28,7 +29,7 @@
                 <div class="mb-3">
                     <label for="laboratorio" class="form-label fw-semibold">Laboratorio</label>
                     <input type="text" th:field="*{laboratorio}" id="laboratorio" class="form-control" 
-                           th:classappend="${#fields.hasErrors('laboratorio')} ? 'is-invalid' : ''" placeholder="Ej. Bayer">
+                        th:classappend="${#fields.hasErrors('laboratorio')} ? 'is-invalid' : ''" placeholder="Ej. Bayer">
                     <div class="invalid-feedback" th:if="${#fields.hasErrors('laboratorio')}" th:errors="*{laboratorio}"></div>
                 </div>
 

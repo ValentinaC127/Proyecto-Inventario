@@ -1,4 +1,4 @@
-/* estilo formulario.html*/
+/* css formulario.html*/
 body {
     font-family: 'Times New Roman', Times, serif;
     background-color: #f4f7f6; 
@@ -46,7 +46,7 @@ body {
     color: #1b382f;
 }
 
-/*Estilos de lista.html*/
+/*css lista.html*/
 h2 {
     color: #4a4e69;
 }
@@ -79,8 +79,6 @@ h2 {
 
 /*login*/
 
-
-
 .login-container {
     display: flex;
     justify-content: center;
@@ -89,7 +87,6 @@ h2 {
     background-color: #f4f7f6;
     padding: 20px;
 }
-
 
 .login-card {
     border: none;
@@ -100,7 +97,6 @@ h2 {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
-
 .card-header-pastel {
     background-color: #b8c0ff;
     color: #2b2d42;
@@ -109,13 +105,11 @@ h2 {
     text-align: center;
 }
 
-
 .login-icon {
     font-size: 2.8rem;
     margin-bottom: 0.5rem;
     display: block;
 }
-
 
 .form-control {
     border-radius: 8px;
@@ -128,7 +122,6 @@ h2 {
     border-color: #b8c0ff;
     box-shadow: 0 0 0 0.25rem rgba(184, 192, 255, 0.4);
 }
-
 
 .btn-pastel-login {
     background-color: #b5ead7;
@@ -145,7 +138,6 @@ h2 {
     background-color: #97dece;
     color: #1b382f;
 }
-
 
 .alert-pastel {
     background-color: #f7d6e0;
@@ -195,7 +187,6 @@ h2 {
     color: #333333;
 }
 
-
 .btn-pastel-back { 
     background-color: #d8c4f1; 
     color: #4a3f5c; 
@@ -244,4 +235,62 @@ h2 {
 .btn-pastel-delete:hover {
     background-color: #f2b5d4;
     color: #333333;
+}
+
+/* Paginador y Buscador */
+.pagination {
+    margin-top: 1.5rem;
+}
+
+.pagination .page-item .page-link {
+    color: #4a4e69;
+    border-radius: 8px;
+    margin: 0 4px;
+    border: 1px solid #d8e2dc;
+    background-color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+    transition: all 0.2s ease-in-out;
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #e8e8e4;
+    color: #2b2d42;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #b8c0ff;
+    border-color: #b8c0ff;
+    color: #2b2d42;
+    font-weight: bold;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #adb5bd;
+    background-color: #fafafd;
+    border-color: #d8e2dc;
+}
+
+/*botones de la barra de búsqueda */
+.btn-pastel-search {
+    background-color: #b8c0ff;
+    color: #2b2d42;
+    border: 1px solid #d8e2dc;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+.btn-pastel-search:hover {
+    background-color: #9db2eb;
+    color: #1f2130;
+}
+
+.btn-pastel-clear {
+    background-color: #e8e8e4;
+    color: #4a4e69;
+    border: 1px solid #d8e2dc;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+.btn-pastel-clear:hover {
+    background-color: #d8d8d4;
+    color: #2b2d42;
 }
