@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public class LoginDto {
      @NotBlank(message = "El nombre de usuario es obligatorio.")
-    private String nombreU;
+    private String nombreL;
 
     @NotBlank(message = "La contraseña es obligatoria.")
     private String contraseña;
@@ -12,17 +12,17 @@ public class LoginDto {
     public LoginDto() {
     }
 
-    public LoginDto(String nombreU, String contraseña) {
-        this.nombreU = nombreU;
+    public LoginDto(String nombreL, String contraseña) {
+        this.nombreL = nombreL;
         this.contraseña = contraseña;
     }
 
-    public String getNombreU() {
-        return nombreU;
+    public String getNombreL() {
+        return nombreL;
     }
 
-    public void setNombreU(String nombreU) {
-        this.nombreU = nombreU;
+    public void setNombreL(String nombreL) {
+        this.nombreL = nombreL;
     }
 
     public String getContraseña() {

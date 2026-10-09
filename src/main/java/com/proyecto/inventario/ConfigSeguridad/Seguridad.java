@@ -24,6 +24,8 @@ public class Seguridad {
             )
             .formLogin(form -> form
                 .loginPage("/login")
+                .usernameParameter("nombreL")
+                .passwordParameter("contraseña")
                 .defaultSuccessUrl("/medicamentos", true)
                 .failureUrl("/login?error")
                 .permitAll()

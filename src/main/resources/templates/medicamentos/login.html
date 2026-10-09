@@ -27,7 +27,7 @@
             </div>
             
             <div th:if="${param.registro != null}" class="alert alert-success mb-3 text-center">
-                Cuenta creada correctamente. Ahora puedes iniciar sesión.
+                Cuenta creada correctamente.
             </div>
 
             <div th:if="${param.logout != null}" class="alert alert-info mb-3 text-center">
@@ -37,20 +37,22 @@
             <form th:action="@{/login}" th:object="${loginDto}" method="post">
 
                 <div class="mb-3">
-                    <label for="nombreU" class="form-label fw-semibold">Usuario</label>
+                    <label for="nombreL" class="form-label fw-semibold">Usuario</label>
                     <input type="text"
-                           id="nombreU"
-                           th:field="*{nombreU}"
+                           id="nombreL"
+                           name="username"
+                           th:field="*{nombreL}"
                            class="form-control"
                            placeholder="Ej. Jungkook"
                            autofocus>
-                    <div th:if="${#fields.hasErrors('nombreU')}" th:errors="*{nombreU}" class="text-danger small mt-1"></div>
+                    <div th:if="${#fields.hasErrors('nombreL')}" th:errors="*{nombreL}" class="text-danger small mt-1"></div>
                 </div>
 
                 <div class="mb-3">
                     <label for="contraseña" class="form-label fw-semibold">Contraseña</label>
                     <input type="password"
                            id="contraseña"
+                           name="password"
                            th:field="*{contraseña}"
                            class="form-control"
                            placeholder="•••••••">
