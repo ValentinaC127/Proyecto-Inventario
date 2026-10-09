@@ -24,8 +24,7 @@
 
             <div th:if="${errorUsuario}" class="alert alert-danger mb-3 text-center" th:text="${errorUsuario}"></div>
 
-            <form th:action="@{/registro}" th:object="${registroDto}" method="post">
-
+            <form th:action="@{/registro}" th:object="${registroDto}" method="post" novalidate>
                 <div class="mb-3">
                     <label for="nombreU" class="form-label fw-semibold">Usuario</label>
                     <input type="text"
@@ -46,7 +45,16 @@
                            placeholder="••••••••">
                     <div class="text-danger small mt-1" th:if="${#fields.hasErrors('contraseña')}" th:errors="*{contraseña}"></div>
                 </div>
-
+                <div class="mb-3">
+              <label for="correoElectronico" class="form-label fw-semibold">Correo Electrónico</label>
+            <input type="text"
+               id="correoElectronico"
+               th:field="*{correoElectronico}"
+               class="form-control"
+               placeholder="taekook@yoonmincom"
+               autofocus>
+           <div th:if="${#fields.hasErrors('correoElectronico')}" th:errors="*{correoElectronico}" class="text-danger small mt-1"></div>
+     </div>
                 <button type="submit" class="btn btn-pastel-login py-2 w-100">
                     Crear cuenta
                 </button>

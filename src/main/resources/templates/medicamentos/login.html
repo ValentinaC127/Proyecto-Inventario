@@ -34,26 +34,27 @@
                 Sesión cerrada correctamente.
             </div>
 
-            <form th:action="@{/login}" method="post">
+            <form th:action="@{/login}" th:object="${loginDto}" method="post">
 
                 <div class="mb-3">
                     <label for="nombreU" class="form-label fw-semibold">Usuario</label>
                     <input type="text"
                            id="nombreU"
-                           name="username"
+                           th:field="*{nombreU}"
                            class="form-control"
                            placeholder="Ej. Jungkook"
                            autofocus>
+                    <div th:if="${#fields.hasErrors('nombreU')}" th:errors="*{nombreU}" class="text-danger small mt-1"></div>
                 </div>
 
                 <div class="mb-3">
                     <label for="contraseña" class="form-label fw-semibold">Contraseña</label>
                     <input type="password"
                            id="contraseña"
-                           name="password"
+                           th:field="*{contraseña}"
                            class="form-control"
-                           placeholder="•••••••"
-                           >
+                           placeholder="•••••••">
+                    <div th:if="${#fields.hasErrors('contraseña')}" th:errors="*{contraseña}" class="text-danger small mt-1"></div>
                 </div>
 
                 <button type="submit" class="btn btn-pastel-login py-2 w-100">
