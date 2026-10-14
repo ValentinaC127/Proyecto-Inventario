@@ -1,70 +1,77 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Nuevo Medicamento</title>
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    
     <link rel="stylesheet" th:href="@{/css/estilos.css}">
 </head>
 <body>
 
-<div class="container mt-5 form-container">
-    <div class="card shadow-sm">
-        <div class="card-header card-header-pastel p-3">
-            <h4 class="card-title mb-0 fw-bold" th:text="${medicamento.id != null} ? 'Editar Medicamento' : 'Registrar Medicamento'">Registrar Medicamento</h4>
-        </div>
-        <div class="card-body p-4">
-            <form th:action="@{/medicamentos/guardar}" th:object="${medicamento}" method="post">
-                <input type="hidden" th:field="*{id}">
-                
-                <div class="mb-3">
-                    <label for="nombre" class="form-label fw-semibold">Nombre del Medicamento</label>
-                    <input type="text" th:field="*{nombre}" id="nombre" class="form-control" 
-                           th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''" placeholder="Ej. Acetaminofén">
-                    <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
-                </div>
+    <div class="container mt-5 form-container">
+        <div class="card shadow-sm">
 
-                <div class="mb-3">
-                    <label for="laboratorio" class="form-label fw-semibold">Laboratorio</label>
-                    <input type="text" th:field="*{laboratorio}" id="laboratorio" class="form-control" 
-                        th:classappend="${#fields.hasErrors('laboratorio')} ? 'is-invalid' : ''" placeholder="Ej. Bayer">
-                    <div class="invalid-feedback" th:if="${#fields.hasErrors('laboratorio')}" th:errors="*{laboratorio}"></div>
-                </div>
+            <div class="card-header card-header-pastel p-3">
+                <h4 class="card-title mb-0 fw-bold" th:text="${medicamento.id != null} ? 'Editar Medicamento' : 'Registrar Medicamento'">
+                    Registrar Medicamento
+                </h4>
+            </div>
 
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="precio" class="form-label fw-semibold">Precio</label>
-                        <input type="number" step="0.01" th:field="*{precio}" id="precio" class="form-control" 
-                               th:classappend="${#fields.hasErrors('precio')} ? 'is-invalid' : ''" placeholder="0.00">
-                        <div class="invalid-feedback" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
+            <div class="card-body p-4">
+                <form th:action="@{/medicamentos/guardar}" th:object="${medicamento}" method="post">
+
+                    <input type="hidden" th:field="*{id}">
+
+                    <div th:if="${#fields.hasGlobalErrors()}" class="alert alert-danger" role="alert">
+                        <ul class="mb-0">
+                            <li th:each="error : ${#fields.globalErrors()}" th:text="${error}">
+                                Error al guardar el medicamento.
+                            </li>
+                        </ul>
                     </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label for="stock" class="form-label fw-semibold">Stock</label>
-                        <input type="number" th:field="*{stock}" id="stock" class="form-control" 
-                               th:classappend="${#fields.hasErrors('stock')} ? 'is-invalid' : ''" placeholder="0">
-                        <div class="invalid-feedback" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></div>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label fw-semibold">Nombre del Medicamento</label>
+                        <input type="text" th:field="*{nombre}" id="nombre" class="form-control" th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''" placeholder="Ej. Acetaminofén">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
                     </div>
-                </div>
 
-                <div class="mb-4">
-                    <label for="fechaVencimiento" class="form-label fw-semibold">Fecha de Vencimiento</label>
-                    <input type="date" th:field="*{fechaVencimiento}" id="fechaVencimiento" class="form-control" 
-                           th:classappend="${#fields.hasErrors('fechaVencimiento')} ? 'is-invalid' : ''">
-                    <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaVencimiento')}" th:errors="*{fechaVencimiento}"></div>
-                </div>
+                    <div class="mb-3">
+                        <label for="laboratorio" class="form-label fw-semibold">Laboratorio</label>
+                        <input type="text" th:field="*{laboratorio}" id="laboratorio" class="form-control" th:classappend="${#fields.hasErrors('laboratorio')} ? 'is-invalid' : ''" placeholder="Ej. Bayer">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('laboratorio')}" th:errors="*{laboratorio}"></div>
+                    </div>
 
-                <div class="d-flex justify-content-end gap-2">
-                    <a th:href="@{/medicamentos}" class="btn btn-pastel-cancel px-4">Cancelar</a>
-                    <button type="submit" class="btn btn-pastel-save px-4 fw-bold">Guardar</button>
-                </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="precio" class="form-label fw-semibold">Precio</label>
+                            <input type="number" step="0.01" th:field="*{precio}" id="precio" class="form-control" th:classappend="${#fields.hasErrors('precio')} ? 'is-invalid' : ''" placeholder="0.00">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
+                        </div>
 
-            </form>
+                        <div class="col-md-6 mb-3">
+                            <label for="stock" class="form-label fw-semibold">Stock</label>
+                            <input type="number" th:field="*{stock}" id="stock" class="form-control" th:classappend="${#fields.hasErrors('stock')} ? 'is-invalid' : ''" placeholder="0">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="fechaVencimiento" class="form-label fw-semibold">Fecha de Vencimiento</label>
+                        <input type="date" th:field="*{fechaVencimiento}" id="fechaVencimiento" class="form-control" th:classappend="${#fields.hasErrors('fechaVencimiento')} ? 'is-invalid' : ''">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaVencimiento')}" th:errors="*{fechaVencimiento}"></div>
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2">
+                        <a th:href="@{/medicamentos}" class="btn btn-pastel-cancel px-4">Cancelar</a>
+                        <button type="submit" class="btn btn-pastel-save px-4 fw-bold">Guardar</button>
+                    </div>
+
+                </form>
+            </div>
+
         </div>
     </div>
-</div>
 
 </body>
 </html>
