@@ -20,7 +20,6 @@ public interface MedicamentoRepository extends JpaRepository<Medicamento, Long> 
            OR TRIM(:keyword) = '' 
            OR LOWER(m.nombre) LIKE LOWER(CONCAT('%', :keyword, '%')) 
            OR LOWER(l.nombre) LIKE LOWER(CONCAT('%', :keyword, '%'))
-        ORDER BY m.nombre ASC
         """)
     Page<Medicamento> buscarPorNombreOLaboratorio(
             @Param("keyword") String keyword, 
