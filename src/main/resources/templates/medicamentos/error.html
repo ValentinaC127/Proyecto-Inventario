@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Sistema de Inventario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body class="d-flex justify-content-center align-items-center min-vh-100" style="background-color: #f4f7f6;">
+
+    <div class="card shadow-sm border-0 text-center rounded-4" style="max-width: 450px; width: 100%;">
+        
+        <div class="card-header-pastel p-4">
+            <h3 class="fw-bold mb-0" th:text="${codigo}">404</h3>
+            <small class="text-muted">Aviso del Sistema</small>
+        </div>
+
+        <div class="card-body p-4">
+            <h5 class="fw-bold mt-2 mb-3" style="color: #4a4e69;">¡Vaya! Algo ha ocurrido</h5>
+            <p class="text-muted mb-4" th:text="${mensaje}">La página que intentas consultar no está disponible.</p>
+            
+            <a th:href="@{/medicamentos}" class="btn btn-pastel-back">
+                Volver al Inventario
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -3,26 +3,27 @@ package com.proyecto.inventario.Dto;
 import jakarta.validation.constraints.NotBlank;
 
 public class LoginDto {
-     @NotBlank(message = "El nombre de usuario es obligatorio.")
-    private String nombreL;
+
+    @NotBlank(message = "El nombre de usuario es obligatorio.")
+    private String nombreU;
 
     @NotBlank(message = "La contraseña es obligatoria.")
-    private String contraseña;
+    private String contraseña; 
 
     public LoginDto() {
     }
 
-    public LoginDto(String nombreL, String contraseña) {
-        this.nombreL = nombreL;
+    public LoginDto(String nombreU, String contraseña) {
+        this.nombreU = nombreU;
         this.contraseña = contraseña;
     }
 
-    public String getNombreL() {
-        return nombreL;
+    public String getNombreU() {
+        return nombreU;
     }
 
-    public void setNombreL(String nombreL) {
-        this.nombreL = nombreL;
+    public void setNombreU(String nombreU) {
+        this.nombreU = nombreU;
     }
 
     public String getContraseña() {

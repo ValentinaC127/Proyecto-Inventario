@@ -72,7 +72,7 @@ public class MedicamentoController {
 
         try {
             medicamentoService.guardar(dtoObj);
-            redirectAttributes.addFlashAttribute("mensajeExito", "¡Medicamento guardado con éxito!");
+            redirectAttributes.addFlashAttribute("mensajeExito", "Medicamento guardado");
             return "redirect:/medicamentos";
 
         } catch (IllegalArgumentException e) {
