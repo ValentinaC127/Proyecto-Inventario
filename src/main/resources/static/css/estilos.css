@@ -294,3 +294,120 @@ h2 {
     background-color: #d8d8d4;
     color: #2b2d42;
 }
+
+.text-pastel-title {
+    color: #4a4e69;
+}
+
+/* Modo oscuro */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f4f7f6; 
+    color: #333333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card, .border {
+    border-color: #d8e2dc !important;
+}
+
+.btn-pastel-add {
+    background-color: #c8e6c9; 
+    color: #2e7d32;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+.btn-pastel-add:hover {
+    background-color: #a5d6a7;
+    color: #1b5e20;
+}
+
+.table-pastel {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.table-pastel thead {
+    background-color: #d8e2dc; 
+    color: #3d5a80;
+}
+.table-pastel tbody tr:nth-child(even) {
+    background-color: #f8edeb; 
+}
+.table-pastel tbody tr:hover {
+    background-color: #e8e8e4;
+}
+
+.btn-pastel-edit {
+    background-color: #ffedcc;
+    color: #8a5300;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+}
+.btn-pastel-delete, .btn-pastel-logout {
+    background-color: #f7d6e0;
+    color: #5c3d46;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+}
+.btn-pastel-search {
+    background-color: #b8c0ff;
+    color: #2b2d42;
+    border: 1px solid #d8e2dc;
+    font-weight: bold;
+}
+.btn-pastel-clear {
+    background-color: #e8e8e4;
+    color: #4a4e69;
+    border: 1px solid #d8e2dc;
+    font-weight: bold;
+}
+
+body.modo-oscuro {
+    background-color: #1e1e2e !important;
+    color: #cdd6f4 !important;
+}
+
+body.modo-oscuro h2, 
+body.modo-oscuro h1 {
+    color: #ffffff !important;
+}
+
+body.modo-oscuro .bg-white,
+body.modo-oscuro .table-responsive {
+    background-color: #2b2b3d !important;
+    border-color: #3b3b52 !important;
+}
+
+body.modo-oscuro .text-muted {
+    color: #a6adc8 !important;
+}
+body.modo-oscuro .text-dark {
+    color: #f5e0dc !important;
+}
+
+body.modo-oscuro .form-control {
+    background-color: #2b2b3d !important;
+    color: #ffffff !important;
+    border-color: #3b3b52 !important;
+}
+body.modo-oscuro .form-control::placeholder {
+    color: #a6adc8 !important;
+}
+
+body.modo-oscuro table,
+body.modo-oscuro table tr,
+body.modo-oscuro table td,
+body.modo-oscuro table th {
+    background-color: #2b2b3d !important;
+    color: #cdd6f4 !important;
+    border-color: #3b3b52 !important;
+}
+
+body.modo-oscuro table thead th {
+    color: #ffffff !important;
+    border-bottom: 2px solid #3b3b52 !important;
+}

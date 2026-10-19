@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 import com.proyecto.inventario.Dto.dto;
@@ -34,6 +37,7 @@ public class MedicamentoController {
     public String listarMedicamentos(
             @RequestParam(required = false) String keyword,
             @RequestParam(defaultValue = "0") int page,
+            @CookieValue(name = "tema", defaultValue = "claro") String tema,
             Model model) {
 
         int pagina = Math.max(page, 0);
@@ -47,8 +51,27 @@ public class MedicamentoController {
         model.addAttribute("paginaActual", medicamentos.getNumber());
         model.addAttribute("totalPaginas", medicamentos.getTotalPages());
         model.addAttribute("keyword", keyword == null ? "" : keyword);
+        
+        model.addAttribute("temaActual", tema);
 
         return "medicamentos/lista";
+    }
+
+    @PostMapping("/preferencia")
+    public String guardarPreferenciaTema(
+            @RequestParam String tema, 
+            HttpServletResponse response) {
+        
+        String elegido = tema.equals("oscuro") ? "oscuro" : "claro";
+        
+        Cookie cookie = new Cookie("tema", elegido);
+        cookie.setMaxAge(31536000); 
+        cookie.setPath("/");        
+        cookie.setHttpOnly(true);   
+        
+        response.addCookie(cookie);
+        
+        return "redirect:/medicamentos";
     }
 
     @GetMapping("/nuevo")
