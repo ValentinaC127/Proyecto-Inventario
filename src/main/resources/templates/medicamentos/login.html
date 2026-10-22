@@ -15,10 +15,16 @@
 
     <div class="card login-card shadow-sm" style="max-width: 400px; width: 100%;">
 
+        
+        <div th:if="${param.expired}" class="alert alert-pastel text-center mb-3" role="alert">
+            Tu sesion ha expirado. Inicia sesion nuevamente.
+        </div>
+
         <div class="card-header-pastel p-4 text-center">
             <h4 class="fw-bold mb-1">Farmacia</h4>
             <small class="text-muted">Control de Inventario Medicamentos</small>
         </div>
+
 
         <div class="card-body p-4">
 

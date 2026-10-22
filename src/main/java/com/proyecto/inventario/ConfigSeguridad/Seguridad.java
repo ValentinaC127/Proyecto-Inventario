@@ -33,6 +33,11 @@ public class Seguridad {
             .logout(logout -> logout
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
+            )
+            
+            .sessionManagement(session -> session
+                .invalidSessionUrl("/login?expired=true") 
+                .maximumSessions(1)                      
             );
 
         return http.build();

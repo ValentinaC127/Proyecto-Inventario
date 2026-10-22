@@ -19,9 +19,14 @@ public class AppErrorController implements ErrorController {
             codigo = Integer.parseInt(status.toString());
         }
 
-        String mensaje = (codigo == 404) 
-            ? "La página o recurso que buscas no existe." 
-            : "Ocurrió un error interno en el servidor.";
+        String mensaje;
+        if (codigo == 404) {
+            mensaje = "La página o recurso que buscas no existe.";
+        } else if (codigo == 400) {
+            mensaje = "La solicitud contiene errores o sintaxis inválida.";
+        } else {
+            mensaje = "Ocurrió un error interno en el servidor.";
+        }
 
         model.addAttribute("codigo", codigo);
         model.addAttribute("mensaje", mensaje);

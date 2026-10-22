@@ -65,7 +65,7 @@ public class MedicamentoController {
         String elegido = tema.equals("oscuro") ? "oscuro" : "claro";
         
         Cookie cookie = new Cookie("tema", elegido);
-        cookie.setMaxAge(31536000); 
+        cookie.setMaxAge(180); 
         cookie.setPath("/");        
         cookie.setHttpOnly(true);   
         
