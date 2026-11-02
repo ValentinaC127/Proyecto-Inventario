@@ -23,6 +23,7 @@ Gestión de Medicamentos.
   "stock": 30,
   "fechaVencimiento": "2027-12-31"
 }
+```
 
 
 **Respuesta:**
