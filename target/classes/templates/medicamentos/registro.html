@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Sistema de Inventario Medicamentos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+
+<body class="login-page">
+
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+
+    <div class="card login-card shadow-sm" style="max-width: 400px; width: 100%;">
+
+        <div class="card-header-pastel p-4 text-center">
+            <h4 class="fw-bold mb-1">Crear cuenta</h4>
+            <small class="text-muted">Sistema de Inventario Farmacéutico</small>
+        </div>
+
+        <div class="card-body p-4">
+
+            <div th:if="${errorUsuario}" class="alert alert-danger mb-3 text-center" th:text="${errorUsuario}"></div>
+
+            <form th:action="@{/registro}" th:object="${registroDto}" method="post" novalidate>
+                <div class="mb-3">
+                    <label for="nombreU" class="form-label fw-semibold">Usuario</label>
+                    <input type="text"
+                           id="nombreU"
+                           th:field="*{nombreU}"
+                           class="form-control"
+                           placeholder="Ej. Jungkook"
+                           autofocus>
+                    <div class="text-danger small mt-1" th:if="${#fields.hasErrors('nombreU')}" th:errors="*{nombreU}"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="contraseña" class="form-label fw-semibold">Contraseña</label>
+                    <input type="password"
+                           id="contraseña"
+                           th:field="*{contraseña}"
+                           class="form-control"
+                           placeholder="••••••••">
+                    <div class="text-danger small mt-1" th:if="${#fields.hasErrors('contraseña')}" th:errors="*{contraseña}"></div>
+                </div>
+                <div class="mb-3">
+              <label for="correoElectronico" class="form-label fw-semibold">Correo Electrónico</label>
+            <input type="text"
+               id="correoElectronico"
+               th:field="*{correoElectronico}"
+               class="form-control"
+               placeholder="taekook@yoonmincom"
+               autofocus>
+           <div th:if="${#fields.hasErrors('correoElectronico')}" th:errors="*{correoElectronico}" class="text-danger small mt-1"></div>
+     </div>
+                <button type="submit" class="btn btn-pastel-login py-2 w-100">
+                    Crear cuenta
+                </button>
+
+            </form>
+
+            <div class="text-center mt-3">
+                <a th:href="@{/login}" class="btn btn-pastel-back w-100">
+                    Volver al inicio de sesión
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -19,6 +19,7 @@ public class Seguridad {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/api/**").permitAll()
                 .requestMatchers("/login", "/registro", "/css/**", "/js/**", "/images/**").permitAll()
                 .anyRequest().authenticated()
             )
