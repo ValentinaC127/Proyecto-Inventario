@@ -6,6 +6,7 @@ import com.proyecto.inventario.service.MedicamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,9 +18,8 @@ public class MedicamentoRestController {
 
     private final MedicamentoService medicamentoService;
 
-
     public MedicamentoRestController(MedicamentoService medicamentoService) {
-    this.medicamentoService = medicamentoService;
+        this.medicamentoService = medicamentoService;
     }
 
     @GetMapping
@@ -47,7 +47,7 @@ public class MedicamentoRestController {
         try {
             dtoObj.setId(null); 
             Medicamento nuevo = medicamentoService.guardar(dtoObj);
-            return ResponseEntity.ok(nuevo);
+            return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body("Error 400: " + e.getMessage());
         }
