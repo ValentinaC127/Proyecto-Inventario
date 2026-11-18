@@ -24,7 +24,7 @@ public class EjecutorReactivo implements CommandLineRunner {
         procesador.procesarActivos().subscribe(
             valor -> System.out.println("onNext: " + valor),
             error -> System.err.println("onError: " + error.getMessage()),
-            () -> System.out.println("onComplete: Flujo finalizado con éxito.\n")
+            () -> System.out.println("onComplete: Flujo finalizado con exito.\n")
         );
 
         System.out.println("--- 2. Conteo Total (Mono) ---");
